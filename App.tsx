@@ -1,12 +1,15 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import AppNavigator from "./navigator/AppNavigator";
+
+import './styles/global.css'
+import RootNavigator from "./navigator/RootNavigator";
+
 
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <AppNavigator />
-    </NavigationContainer>
+
+    <RootNavigator />
+
   )
 };

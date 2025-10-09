@@ -3,7 +3,11 @@
   "compilerOptions": {
     "strict": true,
     "types": [
-      "nativewind/types"
-    ]
+      "nativewind/types",
+      "svg/types",
+      "react/types"
+    ],
+    "resolveJsonModule": true,
+    "skipLibCheck": true
   }
 }
