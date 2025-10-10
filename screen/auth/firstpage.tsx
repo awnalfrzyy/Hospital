@@ -41,7 +41,7 @@ export default function FristPage() {
                 <View className="flex-col gap-4 mb-6">
                     <Button
                         variant="primary"
-                        onPress={() => navigation.navigate('Register' as never)}>
+                        onPress={() => navigation.navigate('HomeScreen' as never)}>
                         Continue with Phone Number
                     </Button>
 

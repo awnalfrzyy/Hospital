@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'; // ✅ versi baru
 import Button from '../../components/ui/Button';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { RootStackParamList } from '../../navigator/AppNavigator';
+import type { RootStackParamList } from '../../navigator/Onboarding-navigator';
 
 const { height } = Dimensions.get('window');
 

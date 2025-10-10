@@ -1,18 +1,17 @@
-import React, { useRef, useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import PhoneInput from "react-native-phone-number-input";
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import CountryPicker, { CountryCode } from "react-native-country-picker-modal";
 
 export default function FormNumberRegister() {
-    const [value, setValue] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
     const [visible, setVisible] = useState(false);
-    const phoneInput = useRef<PhoneInput>(null);
     const [countryCode, setCountryCode] = useState<CountryCode>("ID");
     const [callingCode, setCallingCode] = useState("+62");
 
     const onSelect = (country: any) => {
         setCountryCode(country.cca2);
         setCallingCode(`+${country.callingCode[0]}`);
+        setVisible(false);
     };
 
     return (
@@ -28,19 +27,22 @@ export default function FormNumberRegister() {
                     borderWidth: 1,
                     borderColor: "#ccc",
                     borderRadius: 16,
-                    paddingHorizontal: 10,
                     backgroundColor: "white",
+                    height: 56,
+                    overflow: "hidden",
                 }}
             >
-                {/* Tombol Flag */}
+                {/* Country Picker Button */}
                 <TouchableOpacity
                     onPress={() => setVisible(true)}
                     style={{
                         flexDirection: "row",
                         alignItems: "center",
-                        paddingRight: 8,
+                        paddingHorizontal: 12,
+                        height: "100%",
                         borderRightWidth: 1,
                         borderRightColor: "#ddd",
+                        backgroundColor: "#FFFFFFFF",
                     }}
                 >
                     <CountryPicker
@@ -48,31 +50,44 @@ export default function FormNumberRegister() {
                         withFilter
                         withFlag
                         withCallingCode
+                        withEmoji
                         visible={visible}
                         onClose={() => setVisible(false)}
                         onSelect={onSelect}
+                        containerButtonStyle={{
+                            flexDirection: "row",
+                            alignItems: "center",
+                        }}
                     />
-                    <Text style={{ marginLeft: 6, color: "black" }}>{callingCode}</Text>
-                </TouchableOpacity>
-
-                {/* Input nomor */}
-                <PhoneInput
-                    ref={phoneInput}
-                    defaultValue={value}
-                    defaultCode={countryCode}
-                    layout="first"
-                    onChangeFormattedText={setValue}
-                    renderDropdownImage={<></>} // ini ngeganti arrow jadi kosong
-                    flagButtonStyle={{ display: "none" }}
-                    textInputStyle={{
+                    <Text style={{
+                        marginLeft: 6,
                         color: "black",
                         fontSize: 16,
-                        paddingLeft: 10,
+                        fontWeight: "500"
+                    }}>
+                        {callingCode}
+                    </Text>
+                </TouchableOpacity>
+
+                {/* Phone Number Input */}
+                <TextInput
+                    style={{
+                        flex: 1,
+                        paddingHorizontal: 12,
+                        fontSize: 16,
+                        color: "black",
+                        height: "100%",
                     }}
+                    placeholder="Enter phone number"
+                    placeholderTextColor="#999"
+                    value={phoneNumber}
+                    onChangeText={setPhoneNumber}
+                    keyboardType="phone-pad"
                 />
-
-
             </View>
+
+            {/* Country Picker Modal */}
+
         </View>
     );
 }

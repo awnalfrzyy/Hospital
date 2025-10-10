@@ -3,11 +3,12 @@
   "compilerOptions": {
     "strict": true,
     "types": [
-      "nativewind/types",
-      "svg/types",
-      "react/types"
+      "nativewind/types"
     ],
     "resolveJsonModule": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "jsx": "react-native",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   }
 }
