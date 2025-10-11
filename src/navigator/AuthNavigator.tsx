@@ -14,7 +14,6 @@ export default function AuthNavigator() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Register" component={Register} />
-            <Stack.Screen name="FristPage" component={FristPage} />
         </Stack.Navigator>
     )
 };

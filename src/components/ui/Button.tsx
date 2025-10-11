@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { TouchableOpacity, Text, TouchableOpacityProps, View } from "react-native";
-import GoogleIcon from "../../assets/icons/google.svg";
-import AppleIcon from "../../assets/icons/apple.svg";
+import GoogleIcon from "../../../assets/icons/google.svg";
+import AppleIcon from "../../../assets/icons/apple.svg";
 
 type ButtonProps = TouchableOpacityProps & {
     variant?: "primary" | "secondary" | "outline" | "danger" | "sosial";

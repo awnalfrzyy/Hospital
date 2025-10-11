@@ -1,0 +1,35 @@
+import React, { useState } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import OnboardingNavigator from "./Onboarding-navigator";
+import TabNavigator from "../components/ui/Button-tab";
+
+export type RootStackParamList = {
+    Onboarding: undefined;
+    MainApp: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+export default function RootNavigator() {
+    const [isFinishedOnboarding, setIsFinishedOnboarding] = useState(false);
+
+    return (
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+                {!isFinishedOnboarding ? (
+                    <Stack.Screen name="Onboarding">
+                        {(props) => (
+                            <OnboardingNavigator
+                                {...props}
+                                onFinish={() => setIsFinishedOnboarding(true)} // << handler dikirim
+                            />
+                        )}
+                    </Stack.Screen>
+                ) : (
+                    <Stack.Screen name="MainApp" component={TabNavigator} />
+                )}
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+}
