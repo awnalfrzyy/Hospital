@@ -14,10 +14,19 @@ import Scan from '../../../assets/scan.svg';
 import HospitalIcon from '../../../assets/building-3.svg';
 import Promo1 from '../../../assets/Promotion Card.svg';
 import Promo2 from '../../../assets/Promotion Card(1).svg';
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { HomeStackParamList } from "../../navigator/Home-Navigator";
+
+
+type NavigationProps = NativeStackNavigationProp<HomeStackParamList, 'Home'>;
+
 
 const HomeScreen = () => {
     const [search, setSearch] = useState('');
     const insets = useSafeAreaInsets();
+    const navigation = useNavigation<NavigationProps>();
+
 
     const recommendations = [
         {
@@ -27,6 +36,7 @@ const HomeScreen = () => {
             bg: '#C6D4F1',
             Icon: DoctorIcon,
             iconColor: '#A0B6EA',
+            route: 'BAA',
         },
         {
             id: 2,
@@ -35,6 +45,7 @@ const HomeScreen = () => {
             bg: '#D3F8DF',
             Icon: Scan,
             iconColor: '#AAF0C4',
+            route: 'AWQ',
         },
         {
             id: 3,
@@ -43,6 +54,7 @@ const HomeScreen = () => {
             bg: '#FDE2E4',
             Icon: ArticleIcon,
             iconColor: '#FAC7CFFF',
+            route: 'BAA',
 
         },
         {
@@ -52,10 +64,13 @@ const HomeScreen = () => {
             bg: '#FFF3B0',
             Icon: HospitalIcon,
             iconColor: '#FFE066',
+            route: 'BAA',
         },
     ];
 
     const promotions = [Promo1, Promo2];
+
+
 
     return (
         <SafeAreaView className="flex-1 bg-white">
@@ -114,6 +129,7 @@ const HomeScreen = () => {
                                     activeOpacity={0.9}
                                     className="w-[48%] h-[180px] rounded-2xl mb-4 p-5"
                                     style={{ backgroundColor: item.bg }}
+                                    onPress={() => navigation.navigate(item.route as never)}
                                 >
                                     <View className="w-14 h-14 mb-4 items-center justify-center rounded-xl"
                                         style={{ backgroundColor: item.iconColor }}>

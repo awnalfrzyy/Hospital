@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Register from '../screen/auth/register';
-import FristPage from '../screen/auth/firstpage';
+import Register from '../screen/auth/number-register';
+import FristPage from '../screen/onboarding/firstpage';
 
 export type AuthStackParamList = {
     Register: undefined;

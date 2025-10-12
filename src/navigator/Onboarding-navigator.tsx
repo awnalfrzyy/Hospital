@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import StepOne from "../screen/onboarding/step-one";
 import StepTwo from "../screen/onboarding/step-two";
 import StepThree from "../screen/onboarding/step-three";
-import FristPage from "../screen/auth/firstpage";
+import FristPage from "../screen/onboarding/firstpage";
 
 export type OnboardingStackParamList = {
     StepOne: undefined;

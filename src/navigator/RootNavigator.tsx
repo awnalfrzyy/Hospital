@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import OnboardingNavigator from "./Onboarding-navigator";
-import TabNavigator from "../components/ui/Button-tab";
+import TabNavigator from "../navigator/Tab-navigator";
 
 export type RootStackParamList = {
     Onboarding: undefined;
