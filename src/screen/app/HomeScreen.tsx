@@ -4,6 +4,7 @@ import {
     Text,
     TouchableOpacity,
     ScrollView,
+    FlatList,
 } from 'react-native';
 import SearchInput from '../../components/ui/Search-input';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -40,12 +41,12 @@ const HomeScreen = () => {
         },
         {
             id: 2,
-            title: 'Appointment with QR',
-            desc: 'Queuing without the hustle',
-            bg: '#D3F8DF',
-            Icon: Scan,
-            iconColor: '#AAF0C4',
-            route: 'AWQ',
+            title: 'Nearby Hospitals',
+            desc: 'Locate clinics near you',
+            bg: '#FFF3B0',
+            Icon: HospitalIcon,
+            iconColor: '#FFE066',
+            route: 'BAA',
         },
         {
             id: 3,
@@ -57,14 +58,15 @@ const HomeScreen = () => {
             route: 'BAA',
 
         },
+
         {
             id: 4,
-            title: 'Nearby Hospitals',
-            desc: 'Locate clinics near you',
-            bg: '#FFF3B0',
-            Icon: HospitalIcon,
-            iconColor: '#FFE066',
-            route: 'BAA',
+            title: 'other menus',
+            desc: 'See more menus for those of you who need them',
+            bg: '#D3F8DF',
+            Icon: Scan,
+            iconColor: '#AAF0C4',
+            route: 'AWQ',
         },
     ];
 
@@ -82,23 +84,23 @@ const HomeScreen = () => {
                     flexGrow: 1,
                 }}
             >
-                {/* Header */}
                 <View className="flex-row justify-between items-center mb-6 mt-2">
                     <View>
                         <Text className="text-4xl font-extrabold text-[#1E1E1E]">
                             Hi, Awin!
                         </Text>
-                        <Text className="text-[14px] text-[#6B7280]">
-                            May you always be in good condition
+                        <Text className="text-sm text-neutral-300 ">
+                            I hope you are always in good condition
                         </Text>
                     </View>
 
-                    <TouchableOpacity className="w-14 h-14 rounded-full bg-[#f4f4f4] flex items-center justify-center">
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('Notification')}
+                        className="w-14 h-14 rounded-full bg-[#f4f4f4] flex items-center justify-center">
                         <Bell size={26} color="#254EDB" />
                     </TouchableOpacity>
                 </View>
 
-                {/* Search + Filter */}
                 <View className="flex-row items-center w-full gap-3">
                     <View className="flex-1">
                         <SearchInput
@@ -117,7 +119,7 @@ const HomeScreen = () => {
                 {/* Rekomendasi */}
                 <View className="mt-8">
                     <Text className="text-lg font-semibold text-[#1E1E1E] mb-4">
-                        Rekomendasi untuk kamu
+                        Recommendation for you
                     </Text>
 
                     <View className="flex flex-row flex-wrap justify-between">
@@ -148,7 +150,7 @@ const HomeScreen = () => {
                 {/* Promo Section */}
                 <View className="mt-2 mb-10">
                     <Text className="text-lg font-semibold text-[#1E1E1E] mb-3">
-                        Promo Spesial Hari Ini
+                        Today's Special Promo
                     </Text>
 
                     <ScrollView
@@ -164,6 +166,17 @@ const HomeScreen = () => {
                             </View>
                         ))}
                     </ScrollView>
+                </View>
+                <View className='mt-2 mb-10'>
+                    <Text className='text-lg font-semibold text-[#1E1E1E] mb-3'>
+                        How to use
+                    </Text>
+                    <ScrollView>
+
+                    </ScrollView>
+                    <View>
+
+                    </View>
                 </View>
             </ScrollView>
         </SafeAreaView>

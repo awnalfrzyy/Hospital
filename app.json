@@ -1,12 +1,13 @@
 {
   "expo": {
-    "name": "",
+    "name": "Hospital-app",
+    "slug": "Hospital",
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/logo.png",
+      "image": "./assets/favicon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -15,15 +16,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo.png",
+        "foregroundImage": "./assets/favicon.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": true
     },
     "web": {
-      "favicon": "./assets/logo.png"
-    },
-     "bundler": "metro"
+      "favicon": "./assets/favicon.png"
+    }
   }
 }
