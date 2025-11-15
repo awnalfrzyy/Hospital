@@ -164,7 +164,7 @@ export default function Avatar({
                 />
             )}
 
-            {/* Text Avatar (initials or emoji) */}
+
             {isText && (
                 <Text className={`font-semibold text-neutral-600 ${textSizes[size]}`}>
                     {getInitials(image)}
