@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import SearchInput from '../../components/ui/Search-input';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Bell, Filter } from 'lucide-react-native';
+import { Bell, ChevronLeft, Filter } from 'lucide-react-native';
 import DoctorIcon from '../../../assets/menu-board.svg';
 import ArticleIcon from '../../../assets/message-favorite.svg';
 import Scan from '../../../assets/scan.svg';
@@ -145,6 +145,12 @@ const HomeScreen = () => {
                             );
                         })}
                     </View>
+                    <TouchableOpacity 
+                    onPress={()=> navigation.navigate('')}
+                    className=''>
+                        <Text>lihat lebih banyak</Text>
+                        <ChevronLeft size={10} color='black'/>
+                    </TouchableOpacity>
                 </View>
 
                 {/* Promo Section */}
