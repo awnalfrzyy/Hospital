@@ -1,7 +1,7 @@
 import Card from "./ui/Card";
 import { View, Text, TouchableOpacity, Modal, Image } from "react-native";
 import Avatar from "./ui/avatar";
-import { ChevronLeft, X } from "lucide-react-native";
+import { ChevronRight, X } from "lucide-react-native";
 import { useRoute } from "@react-navigation/native";
 import { useViewProfile } from "../hooks/useViewProfile";
 import { useBackHandler } from "../hooks/useBackHandler";
@@ -34,7 +34,7 @@ export default function Notif({ resource, title, desc }: ComponentsProps) {
 
     return (
         <>
-            <Card className="flex flex-row gap-2 items-center py-3 px-1 bg-white border-2 border-neutral-500">
+            <Card className="flex flex-row gap-2 items-center py-4 px-2 bg-white border-1 border-neutral-500 rounded-2xl">
                 <View className="flex-row items-center flex-1 gap-3">
                     {/* Avatar yang bisa di-click untuk preview */}
                     <TouchableOpacity onPress={() => openModal(resource)}>
@@ -45,13 +45,13 @@ export default function Notif({ resource, title, desc }: ComponentsProps) {
                     </TouchableOpacity>
 
                     <View className="flex-col flex-1">
-                        <Text className="text-xl font-semibold text-black">{title}</Text>
+                        <Text className="text-lg font-semibold text-black">{title}</Text>
                         <Text className="text-sm font-medium text-neutral-500">{desc}</Text>
                     </View>
                 </View>
 
                 <TouchableOpacity className="items-center justify-center">
-                    <ChevronLeft width={24} color="black" />
+                    <ChevronRight width={24} color="black" />
                 </TouchableOpacity>
             </Card>
 

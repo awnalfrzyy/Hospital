@@ -5,10 +5,11 @@ import {
     TouchableOpacity,
     ScrollView,
     FlatList,
+    Dimensions
 } from 'react-native';
 import SearchInput from '../../components/ui/Search-input';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Bell, ChevronLeft, Filter } from 'lucide-react-native';
+import { Bell, ChevronLeft, ChevronRight, Filter } from 'lucide-react-native';
 import DoctorIcon from '../../../assets/menu-board.svg';
 import ArticleIcon from '../../../assets/message-favorite.svg';
 import Scan from '../../../assets/scan.svg';
@@ -18,6 +19,8 @@ import Promo2 from '../../../assets/Promotion Card(1).svg';
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { HomeStackParamList } from "../../navigator/Home-Navigator";
+import Card from '../../components/ui/Card';
+import Button from '../../components/ui/Button';
 
 
 type NavigationProps = NativeStackNavigationProp<HomeStackParamList, 'Home'>;
@@ -27,6 +30,12 @@ const HomeScreen = () => {
     const [search, setSearch] = useState('');
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProps>();
+
+    const data = [
+        { id: '1' },
+        { id: '2' },
+        { id: '3' },
+    ];
 
 
     const recommendations = [
@@ -72,7 +81,7 @@ const HomeScreen = () => {
 
     const promotions = [Promo1, Promo2];
 
-
+    const screenWidth = Dimensions.get('window').width;
 
     return (
         <SafeAreaView className="flex-1 bg-white">
@@ -80,7 +89,7 @@ const HomeScreen = () => {
                 className="px-5 pt-0"
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{
-                    paddingBottom: insets.bottom - 80,
+                    paddingBottom: insets.bottom + 1,
                     flexGrow: 1,
                 }}
             >
@@ -145,16 +154,18 @@ const HomeScreen = () => {
                             );
                         })}
                     </View>
-                    <TouchableOpacity 
-                    onPress={()=> navigation.navigate('')}
-                    className=''>
-                        <Text>lihat lebih banyak</Text>
-                        <ChevronLeft size={10} color='black'/>
-                    </TouchableOpacity>
+                    <Card
+                        onPress={() => navigation.navigate('Menu')}
+                        className="flex-row items-center px-2 py-5 bg-blue-100 rounded-2xl justify-end "
+                    >
+                        <Text className="ml-1 text-black font-medium">Lihat lebih banyak</Text>
+                        <ChevronRight size={16} color="black" />
+                    </Card>
+
                 </View>
 
                 {/* Promo Section */}
-                <View className="mt-2 mb-10">
+                <View className="mt-2 mb-5">
                     <Text className="text-lg font-semibold text-[#1E1E1E] mb-3">
                         Today's Special Promo
                     </Text>
@@ -173,15 +184,29 @@ const HomeScreen = () => {
                         ))}
                     </ScrollView>
                 </View>
-                <View className='mt-2 mb-10'>
+                <View className='mt-0 mb-10'>
                     <Text className='text-lg font-semibold text-[#1E1E1E] mb-3'>
                         How to use
                     </Text>
-                    <ScrollView>
-
-                    </ScrollView>
-                    <View>
-
+                    <FlatList
+                        data={data}
+                        keyExtractor={(item) => item.id}
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        // contentContainerStyle={{ paddingHorizontal: 0 }}
+                        renderItem={({ item }) => (
+                            <View className="w-60 h-60 bg-neutral-400 rounded-2xl mr-3" />
+                        )}
+                    />
+                </View>
+                <View className='w-full h-40 bg-neutral-400 rounded-2xl p-3 justify-center'>
+                    <View className='flex flex-col gap-2 w-[60%]'>
+                        <Text className='text-[16px] font-semibold'>Lorem ipsum dolor sit amet consectetur adipisicing.</Text>
+                        <Button
+                            variant='primary'
+                            className=''>
+                            <Text>pusat bantuan</Text>
+                        </Button>
                     </View>
                 </View>
             </ScrollView>
