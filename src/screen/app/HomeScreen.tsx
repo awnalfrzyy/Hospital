@@ -125,10 +125,12 @@ const HomeScreen = () => {
                     </TouchableOpacity>
                 </View>
 
+
+
                 {/* Rekomendasi */}
                 <View className="mt-8">
                     <Text className="text-lg font-semibold text-[#1E1E1E] mb-4">
-                        Recommendation for you
+                        Menu yang sering dikunjungi
                     </Text>
 
                     <View className="flex flex-row flex-wrap justify-between">
@@ -155,7 +157,7 @@ const HomeScreen = () => {
                         })}
                     </View>
                     <Card
-                        onPress={() => navigation.navigate('Menu')}
+                        onPress={() => navigation.navigate("Menu")}
                         className="flex-row items-center px-2 py-5 bg-blue-100 rounded-2xl justify-end "
                     >
                         <Text className="ml-1 text-black font-medium">Lihat lebih banyak</Text>
@@ -201,7 +203,7 @@ const HomeScreen = () => {
                 </View>
                 <View className='w-full h-40 bg-neutral-400 rounded-2xl p-3 justify-center'>
                     <View className='flex flex-col gap-2 w-[60%]'>
-                        <Text className='text-[16px] font-semibold'>Lorem ipsum dolor sit amet consectetur adipisicing.</Text>
+                        <Text className='text-[14px] font-semibold'>Lorem ipsum dolor sit amet consectetur adipisicing.</Text>
                         <Button
                             variant='primary'
                             className=''>
