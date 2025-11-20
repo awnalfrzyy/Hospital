@@ -4,11 +4,11 @@ import { MenuItem } from '../local-dummy/data-menu';
 
 interface CardMenuProps {
     item: MenuItem;
-    navigation: any; // atau gunakan type navigation yang lebih spesifik
+    navigation: any;
 }
 
 export default function CardMenu({ item, navigation }: CardMenuProps) {
-    const IconSvg = item.Icon; // Simpan component icon
+    const IconSvg = item.Icon;
 
     return (
         <Card
