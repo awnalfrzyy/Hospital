@@ -30,30 +30,31 @@ export default function StepThree() {
                     <View className="w-14 h-1 rounded-sm bg-blue-600 shadow-lg" />
                 </View>
 
-                <View className="mb-14">
+                <View className="-mb-3">
                     <Text className="text-4xl font-extrabold text-gray-900 mb-5 text-start">
-                        Schedule Your First Appointment
+                        Jadwalkan Janji Pertama Anda
                     </Text>
                     <Text className="text-gray-500 text-base leading-7 text-start font-medium">
-                        Choose a suitable time and date to meet your preferred doctor. Begin your journey to better health!
+                        Pilih waktu dan tanggal yang tepat untuk bertemu dokter pilihan Anda.
+                        Mulailah perjalanan Anda menuju kesehatan yang lebih baik!
                     </Text>
                 </View>
 
-                <View className="flex-row gap-5 -top-1 items-end space-x-4">
+                <View className="flex-row gap-5 top-16 items-end space-x-4">
                     <Button
                         variant="secondary"
                         onPress={() => navigation.navigate('FristPage' as never)}
                         className="flex-1"
                     >
-                        Skip Intro
+                        Lewati Intro
                     </Button>
 
                     <Button
                         variant="primary"
-                        onPress={() => navigation.navigate('FristPage' as never)}
+                        onPress={() => navigation.navigate('StepThree' as never)}
                         className="flex-1"
                     >
-                        Continue
+                        Lanjutkan
                     </Button>
                 </View>
             </View>

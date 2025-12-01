@@ -10,10 +10,6 @@ import {
 import SearchInput from '../../components/ui/Search-input';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Bell, ChevronLeft, ChevronRight, Filter } from 'lucide-react-native';
-import DoctorIcon from '../../../assets/menu-board.svg';
-import ArticleIcon from '../../../assets/message-favorite.svg';
-import Scan from '../../../assets/scan.svg';
-import HospitalIcon from '../../../assets/building-3.svg';
 import Promo1 from '../../../assets/Promotion Card.svg';
 import Promo2 from '../../../assets/Promotion Card(1).svg';
 import { useNavigation } from "@react-navigation/native";
@@ -21,62 +17,35 @@ import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { HomeStackParamList } from "../../navigator/Home-Navigator";
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
+import CardMenu from '../../features/menu/components/card-menu';
+import menuData from '../../features/menu/local-dummy/data-menu';
+interface HomeScreenProps {
+    navigations: any;
+    featuredMenus?: number[];
+    title: string;
+}
 
 
 type NavigationProps = NativeStackNavigationProp<HomeStackParamList, 'Home'>;
 
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigations,
+    featuredMenus = [1, 2 , 3, 4], // Default value
+    title = "Featured Services" }: HomeScreenProps) => {
+
     const [search, setSearch] = useState('');
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProps>();
+    const menusToShow = featuredMenus && featuredMenus.length > 0
+    ? featuredMenus.map(i => menuData[i]).filter(Boolean)
+    : menuData.slice(startIndex);
+
+
 
     const data = [
         { id: '1' },
         { id: '2' },
         { id: '3' },
-    ];
-
-
-    const recommendations = [
-        {
-            id: 1,
-            title: 'Book an Appointment',
-            desc: 'Find a doctor or specialist',
-            bg: '#C6D4F1',
-            Icon: DoctorIcon,
-            iconColor: '#A0B6EA',
-            route: 'BAA',
-        },
-        {
-            id: 2,
-            title: 'Nearby Hospitals',
-            desc: 'Locate clinics near you',
-            bg: '#FFF3B0',
-            Icon: HospitalIcon,
-            iconColor: '#FFE066',
-            route: 'BAA',
-        },
-        {
-            id: 3,
-            title: 'Medicine Reminder',
-            desc: 'Never miss a dose again',
-            bg: '#FDE2E4',
-            Icon: ArticleIcon,
-            iconColor: '#FAC7CFFF',
-            route: 'BAA',
-
-        },
-
-        {
-            id: 4,
-            title: 'other menus',
-            desc: 'See more menus for those of you who need them',
-            bg: '#D3F8DF',
-            Icon: Scan,
-            iconColor: '#AAF0C4',
-            route: 'AWQ',
-        },
     ];
 
     const promotions = [Promo1, Promo2];
@@ -133,28 +102,17 @@ const HomeScreen = () => {
                         Menu yang sering dikunjungi
                     </Text>
 
-                    <View className="flex flex-row flex-wrap justify-between">
-                        {recommendations.map((item) => {
-                            const IconSvg = item.Icon;
-                            return (
-                                <TouchableOpacity
+                    <View className="flex-1 p-0">
+                        {/* <Text className="text-2xl font-bold mb-4">{title}</Text> */}
+                        <View className="flex-row flex-wrap justify-between">
+                            {menusToShow.map((item) => (
+                                <CardMenu
                                     key={item.id}
-                                    activeOpacity={0.9}
-                                    className="w-[48%] h-[180px] rounded-2xl mb-4 p-5"
-                                    style={{ backgroundColor: item.bg }}
-                                    onPress={() => navigation.navigate(item.route as never)}
-                                >
-                                    <View className="w-14 h-14 mb-4 items-center justify-center rounded-xl"
-                                        style={{ backgroundColor: item.iconColor }}>
-                                        <IconSvg width={34} height={34} />
-                                    </View>
-                                    <Text className="font-bold text-[16px] text-[#1E1E1E] mb-1">
-                                        {item.title}
-                                    </Text>
-                                    <Text className="text-sm text-[#6B7280]">{item.desc}</Text>
-                                </TouchableOpacity>
-                            );
-                        })}
+                                    item={item}
+                                    navigation={navigation}
+                                />
+                            ))}
+                        </View>
                     </View>
                     <Card
                         onPress={() => navigation.navigate("Menu")}

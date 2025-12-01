@@ -1,8 +1,8 @@
 import React from 'react';
-import DoctorIcon from '../../../assets/menu-board.svg';
-import ArticleIcon from '../../../assets/message-favorite.svg';
-import Scan from '../../../assets/scan.svg';
-import HospitalIcon from '../../../assets/building-3.svg';
+import DoctorIcon from '../../../../assets/icons/menu-board.svg';
+import ArticleIcon from '../../../../assets/icons/message-favorite.svg'
+import Scan from '../../../../assets/icons/scan.svg';
+import HospitalIcon from '../../../../assets/icons/message-favorite.svg';
 
 export interface MenuItem {
     id: number;

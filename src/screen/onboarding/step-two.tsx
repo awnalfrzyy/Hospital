@@ -30,12 +30,12 @@ export default function StepTwo() {
                     <View className="w-14 h-1 rounded-sm bg-gray-300" />
                 </View>
 
-                <View className="mb-14">
+                <View className="mb-6">
                     <Text className="text-4xl font-extrabold text-gray-900 mb-5 text-start">
-                        Choose Specialization
+                        Pilih Spesialisasi
                     </Text>
                     <Text className="text-gray-500 text-base leading-7 text-start font-medium">
-                        Select the medical specialization you need so we can tailor your experience.
+                        Pilih spesialisasi medis yang Anda butuhkan sehingga kami dapat menyesuaikan pengalaman Anda.
                     </Text>
                 </View>
 
@@ -45,7 +45,7 @@ export default function StepTwo() {
                         onPress={() => navigation.navigate('FristPage' as never)}
                         className="flex-1"
                     >
-                        Skip Intro
+                        Lewati Intro
                     </Button>
 
                     <Button
@@ -53,7 +53,7 @@ export default function StepTwo() {
                         onPress={() => navigation.navigate('StepThree' as never)}
                         className="flex-1"
                     >
-                        Continue
+                        Lanjutkan
                     </Button>
                 </View>
             </View>

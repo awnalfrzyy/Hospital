@@ -1,4 +1,4 @@
-import Notif from "../../components/notif";
+import Notif from "../../features/notification/components/notif";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { View } from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
