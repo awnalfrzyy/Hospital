@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-import { Home, Calendar, Clock, MessageCircle, User } from 'lucide-react-native';
+import { Home, Calendar, Clock, MessageCircle, User, Bell } from 'lucide-react-native';
 
 import HomeNavigator from './Home-Navigator';
 import CalenderScreen from '../screen/app/CalenderScreen';
@@ -56,7 +56,7 @@ const TabNavigator: React.FC = () => {
                                 IconComponent = Clock;
                                 break;
                             case 'Chat':
-                                IconComponent = MessageCircle;
+                                IconComponent = Bell;
                                 break;
                             case 'Profile':
                                 IconComponent = User;

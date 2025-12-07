@@ -28,9 +28,10 @@ export default function HomeNavigator() {
             // Sembunyiin tab bar pas masuk ke BookAnAppointment
             navigation.getParent()?.setOptions({
                 tabBarStyle:
-                    currentRoute === "BAA"
+                    currentRoute === "BAA" || currentRoute === "Menu"
                         ? { display: "none" }
                         : { position: "absolute", backgroundColor: "#fff", height: 60 },
+
             });
         });
 
@@ -42,7 +43,7 @@ export default function HomeNavigator() {
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="BAA" component={BookAnAppointment} />
             <Stack.Screen name="AWQ" component={AppointmentWithQR} />
-            <Stack.Screen name="Notification" component={NotificationScreen} options={{ headerShown: true }} />
+            <Stack.Screen name="Notification" component={NotificationScreen} />
             <Stack.Screen name="Menu" component={MenuScreen} />
         </Stack.Navigator>
     );

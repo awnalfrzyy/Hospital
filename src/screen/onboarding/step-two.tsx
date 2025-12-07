@@ -34,12 +34,12 @@ export default function StepTwo() {
                     <Text className="text-4xl font-extrabold text-gray-900 mb-5 text-start">
                         Pilih Spesialisasi
                     </Text>
-                    <Text className="text-gray-500 text-base leading-7 text-start font-medium">
+                    <Text className="text-gray-500 text-base text-start font-medium">
                         Pilih spesialisasi medis yang Anda butuhkan sehingga kami dapat menyesuaikan pengalaman Anda.
                     </Text>
                 </View>
 
-                <View className="flex-row gap-5 top-16 items-end space-x-4">
+                <View className="flex-row gap-5 top-7 items-end space-x-4">
                     <Button
                         variant="secondary"
                         onPress={() => navigation.navigate('FristPage' as never)}

@@ -1,6 +1,6 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { View, Text } from 'react-native'
-import FormNumberRegister from "../../components/form-number-register";
+import FormNumberRegister from "../../features/register/components/form-number-register";
 import Button from "../../components/ui/Button";
 
 export default function Register() {

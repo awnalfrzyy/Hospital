@@ -5,11 +5,12 @@ import {
     TouchableOpacity,
     ScrollView,
     FlatList,
+    Image,
     Dimensions
 } from 'react-native';
 import SearchInput from '../../components/ui/Search-input';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { Bell, ChevronLeft, ChevronRight, Filter } from 'lucide-react-native';
+import { Bell, ChevronLeft, Info, ChevronRight, Filter } from 'lucide-react-native';
 import Promo1 from '../../../assets/Promotion Card.svg';
 import Promo2 from '../../../assets/Promotion Card(1).svg';
 import { useNavigation } from "@react-navigation/native";
@@ -20,26 +21,24 @@ import Button from '../../components/ui/Button';
 import CardMenu from '../../features/menu/components/card-menu';
 import menuData from '../../features/menu/local-dummy/data-menu';
 interface HomeScreenProps {
-    navigations: any;
+    navigations?: any;
     featuredMenus?: number[];
-    title: string;
+    title?: string;
 }
 
 
 type NavigationProps = NativeStackNavigationProp<HomeStackParamList, 'Home'>;
 
-
 const HomeScreen = ({ navigations,
-    featuredMenus = [1, 2 , 3, 4], // Default value
+    featuredMenus = [1, 2, 3, 4],
     title = "Featured Services" }: HomeScreenProps) => {
 
     const [search, setSearch] = useState('');
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavigationProps>();
-    const menusToShow = featuredMenus && featuredMenus.length > 0
-    ? featuredMenus.map(i => menuData[i]).filter(Boolean)
-    : menuData.slice(startIndex);
-
+    const menusToShow = featuredMenus.length > 0
+        ? menuData.filter(item => featuredMenus.includes(item.id))
+        : menuData;
 
 
     const data = [
@@ -74,8 +73,8 @@ const HomeScreen = ({ navigations,
 
                     <TouchableOpacity
                         onPress={() => navigation.navigate('Notification')}
-                        className="w-14 h-14 rounded-full bg-[#f4f4f4] flex items-center justify-center">
-                        <Bell size={26} color="#254EDB" />
+                        className="w-14 h-14 rounded-full bg-transparent flex items-center justify-center">
+                        <Info size={26} color="#254EDB" />
                     </TouchableOpacity>
                 </View>
 
@@ -89,14 +88,26 @@ const HomeScreen = ({ navigations,
                         />
                     </View>
 
-                    <TouchableOpacity className="py-4 px-4 rounded-2xl bg-[#f4f4f4] flex items-center justify-center">
+                    {/* <TouchableOpacity className="py-4 px-4 rounded-2xl bg-[#f4f4f4] flex items-center justify-center">
                         <Filter size={24} color="#254EDB" />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
 
+                <View className="mt-8 justify-start flex flex-row items-center gap-4 border-2 border-red-200  p-2 rounded-2xl shadow shadow-red-200">
+                    <View className='bg-red-200 w-14 h-14 p-1 rounded-full'>
+                        <Image
+                            source={require('../../../assets/logo.png')}
+                            className="w-full h-full"
+                            resizeMode="contain"
+                        />
+                    </View>
+                    <View className='flex flex-col'>
+                        <Text className='text-sm font-semibold'>MedCare Point</Text>
+                        <Text className='text-sm font-medium'>Dapatkan dan pakai untuk transaksimu</Text>
+                    </View>
 
+                </View>
 
-                {/* Rekomendasi */}
                 <View className="mt-8">
                     <Text className="text-lg font-semibold text-[#1E1E1E] mb-4">
                         Menu yang sering dikunjungi
@@ -124,10 +135,9 @@ const HomeScreen = ({ navigations,
 
                 </View>
 
-                {/* Promo Section */}
                 <View className="mt-2 mb-5">
-                    <Text className="text-lg font-semibold text-[#1E1E1E] mb-3">
-                        Today's Special Promo
+                    <Text className="text-xl font-semibold text-[#1E1E1E] mb-0">
+                        Promo menarik
                     </Text>
 
                     <ScrollView
@@ -144,6 +154,31 @@ const HomeScreen = ({ navigations,
                         ))}
                     </ScrollView>
                 </View>
+
+                <View
+                    className="flex-row items-center gap-4 p-3 rounded-2xl border border-green-600 bg-green-500 justify-between"
+                    style={{
+                        shadowColor: "#16a34a",
+                        shadowOffset: { width: 0, height: 6 },
+                        shadowOpacity: 0,
+                        shadowRadius: 8,
+                        elevation: 4,
+                    }}
+                >                    <View className='bg-red-200 w-10 h-10 p-1 rounded-full'>
+                        <Image
+                            source={require('../../../assets/logo.png')}
+                            className="w-full h-full"
+                            resizeMode="contain"
+                        />
+                    </View>
+                    <View className="flex-1">
+                        <Text className='text-sm font-semibold'>Vocher spesial tersedia, Cek yuk!</Text>
+                    </View>
+                    <TouchableOpacity className='rounded-full py-2 px-2 bg-blue-600'>
+                        <ChevronRight size={16} color="white" />
+                    </TouchableOpacity>
+                </View>
+
                 <View className='mt-0 mb-10'>
                     <Text className='text-lg font-semibold text-[#1E1E1E] mb-3'>
                         How to use
@@ -159,6 +194,22 @@ const HomeScreen = ({ navigations,
                         )}
                     />
                 </View>
+                <View className='mb-10'>
+                    <Text className='text-lg font-semibold text-[#1E1E1E] mb-3'>
+                        Baca juga artikel kesehatan
+                    </Text>
+                    <FlatList
+                        data={data}
+                        keyExtractor={(item) => item.id}
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        // contentContainerStyle={{ paddingHorizontal: 0 }}
+                        renderItem={({ item }) => (
+                            <View className="w-80 h-60 bg-neutral-400 rounded-2xl mr-3" />
+                        )}
+                    />
+                </View>
+
                 <View className='w-full h-40 bg-neutral-400 rounded-2xl p-3 justify-center'>
                     <View className='flex flex-col gap-2 w-[60%]'>
                         <Text className='text-[14px] font-semibold'>Lorem ipsum dolor sit amet consectetur adipisicing.</Text>

@@ -1,11 +1,28 @@
+import Notif from "../../features/notification/components/notif";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { View } from "react-native";
-import NotFound from "../../components/not-found";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 export default function ChatScreen() {
     return (
-        <View className="flex-1 justify-center items-center bg-white">
-            <NotFound />
-        </View>
+        <SafeAreaView className="flex-1">
+            <View className="justify-center flex-col flex gap-2 items-center px-3">
+                <Notif
+                    resource="J"
+                    title="dsnadnmas"
+                    desc="sdandakmdlas"
+                />
+                <Notif
+                    resource="J"
+                    title="dsnadnmas"
+                    desc="sdandakmdlas"
+                />
+                <Notif
+                    resource="J"
+                    title="dsnadnmas"
+                    desc="sdandakmdlas"
+                />
+            </View>
+        </SafeAreaView>
     )
-};
-
+}

@@ -37,7 +37,7 @@ export default function StepOne({ navigation }: StepOneProps) {
                 </View>
 
                 <View className="mb-6">
-                    <Text className="text-4xl font-extrabold text-gray-900 mb-5">
+                    <Text className="text-4xl font-extrabold text-gray-900 mb-5 " >
                         Selamat Datang{'\n'}di MedCare!
                     </Text>
 
